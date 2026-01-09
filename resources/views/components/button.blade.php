@@ -35,7 +35,7 @@
         justify-center
         px-14 py-3
         tracking-widest
-        font-semibold uppercase
+        font-semibold text-xs uppercase
         transition ease-in-out duration-150 ' . $width . ' ' . $types[$type] . ' ' . $gdnt]) }}>
         
     {{ $slot }}
