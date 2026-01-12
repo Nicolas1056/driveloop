@@ -1,20 +1,9 @@
 @props([
-    'width' => 'auto',
     'type' => 'primary',
     'gradient' => false,
 ])
 
 @php
-    $width = [
-        'auto' => 'w-auto',
-        'sm' => 'w-[5%]',
-        'md' => 'w-[15%]',
-        'lg' => 'w-[30%]',
-        'xl' => 'w-[40%]',
-        '2xl' => 'w-[50%]',
-        'full' => 'w-full',
-    ][$width];
-
     $types = [
         'primary' => 'bg-dl hover:bg-dl-two border border-transparent text-white',
         'secondary' => 'bg-dl-two hover:bg-dl-four border border-transparent text-white',
@@ -35,8 +24,8 @@
         justify-center
         px-14 py-3
         tracking-widest
-        font-semibold text-xs uppercase
-        transition ease-in-out duration-150 ' . $width . ' ' . $types[$type] . ' ' . $gdnt]) }}>
+        font-semibold uppercase
+        transition ease-in-out duration-150 ' . $types[$type] . ' ' . $gdnt]) }}>
         
     {{ $slot }}
 </button>
