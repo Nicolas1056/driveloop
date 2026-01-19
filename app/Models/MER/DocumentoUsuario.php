@@ -11,6 +11,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $idtipdocusu
  * @property string $num
  * @property int|null $codusu
+ * @property string|null $url_archivo
+ * @property string|null $estado
+ * @property string|null $mensaje_rechazo
  * 
  * @property TipoDocUsuario $tipo_doc_usuario
  * @property User|null $user
@@ -32,7 +35,10 @@ class DocumentoUsuario extends Model
 	protected $fillable = [
 		'idtipdocusu',
 		'num',
-		'codusu'
+		'codusu',
+		'url_archivo',
+		'estado',
+		'mensaje_rechazo'
 	];
 
 	public function tipo_doc_usuario()
