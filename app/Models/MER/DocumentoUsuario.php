@@ -11,7 +11,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $idtipdocusu
  * @property string $num
  * @property int|null $codusu
- * @property string|null $url_archivo
+ * @property string|null $url_anverso
+ * @property string|null $url_reverso
  * @property string|null $estado
  * @property string|null $mensaje_rechazo
  * 
@@ -36,7 +37,8 @@ class DocumentoUsuario extends Model
 		'idtipdocusu',
 		'num',
 		'codusu',
-		'url_archivo',
+		'url_anverso',
+		'url_reverso',
 		'estado',
 		'mensaje_rechazo'
 	];
@@ -48,6 +50,6 @@ class DocumentoUsuario extends Model
 
 	public function user()
 	{
-		return $this->belongsTo(User::class, 'codusu', 'cod');
+		return $this->belongsTo(User::class, 'codusu', 'id');
 	}
 }

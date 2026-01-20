@@ -102,7 +102,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
 	public function documentos_usuarios()
 	{
-		return $this->hasMany(DocumentoUsuario::class, 'codusu', 'cod');
+		return $this->hasMany(DocumentoUsuario::class, 'codusu', 'id');
 	}
 
 	public function reservas()
