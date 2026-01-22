@@ -14,13 +14,14 @@
         </div>
     @endif
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
 
         <!-- Tarjeta Documento de Identidad -->
-        <x-card class="p-6 bg-white shadow-lg flex flex-col h-full">
-            <div class="border-b border-gray-100 pb-4 mb-6">
+        <x-card class="p-4 bg-white flex flex-col h-full">
+            <div class="border-b border-gray-100 pb-4 mb-4">
                 <h5 class="text-xl font-semibold text-dl">Documento de Identidad</h5>
-                <p class="text-sm text-gray-500 mt-1">Sube foto de AMBAS caras de tu Cédula o Pasaporte.</p>
+                <p class="text-sm text-gray-500 mt-1 h-10 flex items-center">Sube foto de AMBAS caras de tu Cédula o
+                    Pasaporte.</p>
             </div>
 
             <div class="flex-grow flex flex-col justify-between">
@@ -28,13 +29,13 @@
                 @if($docIdentidad)
                     {{-- Si está Pendiente o Aprobado, mostramos estado centrado --}}
                     @if($docIdentidad->estado != 'RECHAZADO')
-                        <div class="flex-grow flex flex-col items-center justify-center text-center p-8">
+                        <div class="flex-grow flex flex-col items-center justify-start text-center p-4">
                             {{-- Icono según estado --}}
-                            <div class="mb-4 text-4xl">
+                            <div class="mb-2 h-24 flex items-center justify-center">
                                 @if($docIdentidad->estado == 'APROBADO')
-                                    <img src="{{ asset('images/icono-aprobado.png') }}" alt="Aprobado" class="w-40 h-40">
+                                    <img src="{{ asset('images/icono-aprobado.png') }}" alt="Aprobado" class="w-24 h-24">
                                 @else
-                                    <img src="{{ asset('images/icono-pendiente.png') }}" alt="Pendiente" class="w-40 h-40">
+                                    <img src="{{ asset('images/icono-pendiente.png') }}" alt="Pendiente" class="w-24 h-24">
                                 @endif
                             </div>
 
@@ -43,15 +44,15 @@
                                 Documento {{ ucfirst(strtolower($docIdentidad->estado)) }}
                             </h3>
 
-                            <p class="text-sm text-gray-500 mt-2 max-w-xs mx-auto">
+                            <p class="text-sm text-gray-500 mt-2 max-w-xs mx-auto h-10 flex items-center justify-center">
                                 @if($docIdentidad->estado == 'APROBADO')
                                     Tu documento ha sido verificado correctamente.
                                 @else
-                                    Estamos revisando tus archivos. Este proceso puede tomar unos minutos.
+                                    Estamos validando tu documento de identificación.
                                 @endif
                             </p>
 
-                            <div class="mt-6 flex gap-3 text-xs justify-center">
+                            <div class="mt-2 flex flex-col gap-3 text-xs justify-center items-center">
                                 @if($docIdentidad->url_anverso)
                                     <a href="{{ asset('storage/' . $docIdentidad->url_anverso) }}" target="_blank">
                                         <x-button class="text-xs w-30" x-data="" type="tertiary">
@@ -98,7 +99,7 @@
                                         </label>
                                     </div>
                                     <select name="documento_tipo"
-                                        class="w-full px-4 pt-7 pb-2 text-sm border border-dl xl:rounded-md bg-white appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-dl"
+                                        class="w-full px-4 pt-4 pb-2 text-sm border border-dl xl:rounded-md bg-white appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-dl"
                                         required>
                                         <option value="">Seleccione...</option>
                                         @foreach ($documentosTipo as $tipo)
@@ -113,7 +114,7 @@
                             </div>
                             <p class="text-xs text-gray-400 -mt-2 mb-2">* Reverso opcional para pasaporte</p>
                         </div>
-                        <div class="pt-2 mt-auto">
+                        <div class="pt-4 mt-auto">
                             <x-button type="primary" class="w-full">
                                 Subir Identidad
                             </x-button>
@@ -124,21 +125,22 @@
         </x-card>
 
         <!-- Tarjeta Licencia de Conducción -->
-        <x-card class="p-6 bg-white shadow-lg flex flex-col h-full">
-            <div class="border-b border-gray-100 pb-4 mb-6">
+        <x-card class="p-4 bg-white flex flex-col h-full">
+            <div class="border-b border-gray-100 pb-4 mb-4">
                 <h5 class="text-xl font-semibold text-dl">Licencia de Conducción</h5>
-                <p class="text-sm text-gray-500 mt-1">Sube fotos de AMBAS caras de tu licencia.</p>
+                <p class="text-sm text-gray-500 mt-1 h-10 flex items-center">Sube fotos de AMBAS caras de tu licencia.
+                </p>
             </div>
 
             <div class="flex-grow flex flex-col justify-between">
                 @if($docLicencia)
                     @if($docLicencia->estado != 'RECHAZADO')
-                        <div class="flex-grow flex flex-col items-center justify-center text-center p-8">
-                            <div class="mb-4 text-4xl">
+                        <div class="flex-grow flex flex-col items-center justify-start text-center p-4">
+                            <div class="mb-2 h-24 flex items-center justify-center">
                                 @if($docLicencia->estado == 'APROBADO')
-                                    <img src="{{ asset('images/icono-aprobado.png') }}" alt="Aprobado" class="w-40 h-40">
+                                    <img src="{{ asset('images/icono-aprobado.png') }}" alt="Aprobado" class="w-24 h-24">
                                 @else
-                                    <img src="{{ asset('images/icono-pendiente.png') }}" alt="Pendiente" class="w-40 h-40">
+                                    <img src="{{ asset('images/icono-pendiente.png') }}" alt="Pendiente" class="w-24 h-24">
                                 @endif
                             </div>
                             <h3
@@ -146,7 +148,7 @@
                                 Documento {{ ucfirst(strtolower($docLicencia->estado)) }}
                             </h3>
 
-                            <p class="text-sm text-gray-500 mt-2 max-w-xs mx-auto">
+                            <p class="text-sm text-gray-500 mt-2 max-w-xs mx-auto h-10 flex items-center justify-center">
                                 @if($docLicencia->estado == 'APROBADO')
                                     Tu licencia ha sido verificada correctamente.
                                 @else
@@ -154,7 +156,7 @@
                                 @endif
                             </p>
 
-                            <div class="mt-6 flex gap-3 text-xs justify-center">
+                            <div class="mt-2 flex flex-col gap-3 text-xs justify-center items-center">
                                 @if($docLicencia->url_anverso)
                                     <a href="{{ asset('storage/' . $docLicencia->url_anverso) }}" target="_blank">
                                         <x-button class="text-xs w-30" x-data="" type="tertiary">
@@ -178,7 +180,7 @@
                         </div>
                     @endif
                 @else
-                    <div class="mb-6 p-3 bg-yellow-50 text-yellow-700 rounded-md text-sm">
+                    <div class="mb-4 p-3 bg-yellow-50 text-yellow-700 rounded-md text-sm">
                         ⚠️ No has subido este documento.
                     </div>
                 @endif
@@ -196,7 +198,7 @@
                                 <x-input type="file" name="archivo_reverso" label="Reverso" required />
                             </div>
                         </div>
-                        <div class="pt-10 mt-auto">
+                        <div class="pt-4 mt-auto">
                             <x-button type="primary" class="w-full">
                                 Subir Licencia
                             </x-button>
