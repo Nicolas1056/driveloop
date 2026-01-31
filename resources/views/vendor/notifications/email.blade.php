@@ -1,11 +1,12 @@
 <x-mail::message>
 {{-- Logo --}}
 <div style="text-align: center; margin-bottom: 20px;">
-    <img src="{{ asset('images/logo.png') }}" alt="DriveLoop Logo" style="height: 60px; width: auto;">
+<img src="{{ $message->embed(public_path('images/logo.png')) }}" alt="DriveLoop Logo"
+style="height: 50px; width: auto;">
 </div>
 
 {{-- Greeting --}}
-@if (! empty($greeting))
+@if (!empty($greeting))
 # {{ $greeting }}
 @else
 @if ($level === 'error')
@@ -44,11 +45,11 @@ default => 'primary',
 @isset($actionText)
 <x-slot:subcopy>
 @lang(
-    "If you're having trouble clicking the \":actionText\" button, copy and paste the URL below\n".
-    'into your web browser:',
-    [
-        'actionText' => $actionText,
-    ]
+"If you're having trouble clicking the \":actionText\" button, copy and paste the URL below\n" .
+'into your web browser:',
+[
+'actionText' => $actionText,
+]
 ) <span class="break-all">[{{ $displayableActionUrl }}]({{ $actionUrl }})</span>
 </x-slot:subcopy>
 @endisset
