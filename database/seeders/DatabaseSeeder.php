@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\MER\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Database\Seeders\RolesTableSeeder;
+use Database\Seeders\RolesAndPermissionsSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(RolesTableSeeder::class);
+        $this->call(RolesAndPermissionsSeeder::class);
         $this->call(EstadosTicketTableSeeder::class);
         $this->call(EstadosReservaTableSeeder::class);
         $this->call(PrioridadesTicketTableSeeder::class);
