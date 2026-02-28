@@ -142,7 +142,6 @@ class User extends Authenticatable implements MustVerifyEmail
 		return $hasIdentity && $hasLicense;
 	}
 
-
 	/*Comprueba si la cuenta del usuario esta activa */
 	public function isActive(): bool
 	{
